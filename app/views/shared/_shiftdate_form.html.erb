@@ -1,0 +1,7 @@
+<%= form_for(@shiftdate) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.date_field :date %></br>
+	</div>
+	<%= f.submit "Post", class: "btn btn-large btn-primary" %><!--fがmicropostオブジェクトでsubmitしたらmicropostControllerのcreateメソッドに-->
+<% end %>

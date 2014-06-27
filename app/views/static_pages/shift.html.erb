@@ -10,12 +10,12 @@
 		</section>
 	</aside>
 	<div class="span8">
-    <% if @user.shiftdates.any? %>
-      <h3>Shift Dates (<%= @user.shiftdates.count %>)</h3>
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
-        <%= render @shiftdates %>
+        <%= render @microposts %>
       </ol>
-      <%= will_paginate @shiftdates %>
+      <%= will_paginate @microposts %>
     <% end %>
   </div>
 </div>

@@ -20,10 +20,6 @@ module SessionsHelper
 		@current_user ||= User.find_by(remember_token: remember_token)
 	end
 
-	def company_members
-		user = current_user
-  		@company_members = User.find_all_by_company(user.company)
-	end
 
 	def current_user?(user)
 		user == current_user
