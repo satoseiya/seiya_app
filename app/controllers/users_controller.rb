@@ -9,8 +9,18 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
-  	@shiftdates = @user.shiftdates.paginate(page: params[:page])
+  	if current_user.admin?
+  		user = current_user
+  		@users = User.paginate(page: params[:page]).find_all_by_company(user.company)
+
+  		@user = User.find(params[:id])
+  		@shiftdates = @user.shiftdates.paginate(page: params[:page])
+  		@shiftdate = current_user.shiftdates.build if signed_in?
+  	else
+  		@user = User.find(params[:id])
+  		@shiftdates = @user.shiftdates.paginate(page: params[:page])
+  		@shiftdate = current_user.shiftdates.build if signed_in?
+  	end
   end
 
   def new

@@ -1,4 +1,16 @@
+
 <%= provide(:tittle, @user.name) %>
+<% if current_user.admin? %>
+	<h1>Company shifts</h1>
+
+	<%= will_paginate %>
+
+	<ul class="users">
+  		<%= render @users %>
+	</ul>
+
+	<%= will_paginate %>
+<% else %>
 <div class="row">
 	<asaide>
 		<section class="span4">
@@ -7,6 +19,9 @@
 			<%= @user.company %>
 			<%= @user.name %>
 			</h1>
+			<section>
+				<%= render 'shared/shiftdate_form' %>
+			</section>
 		</section>
 	</aside>
 	<div class="span8">
@@ -17,5 +32,6 @@
       </ol>
       <%= will_paginate @shiftdates %>
     <% end %>
-  </div>
+  	</div>
 </div>
+<% end %>
