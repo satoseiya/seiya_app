@@ -1,12 +1,20 @@
 <% if current_user.admin? %>
-	<li>
-  	<%= gravatar_for user, size: 52 %>
-  	<%= link_to user.name, user %>
-  	<% if current_user.admin? && !current_user?(user) %>
-    	| <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  	<% end %>
-	</li>
+
+	<tr>
+		<th>
+  			<!--<%= gravatar_for user, size: 52 %>-->
+  			<%= link_to user.name, user %>
+  		</th>
+  		<% @next_month_array.each do |date| %>
+  			<td align="center"><% user.shiftdates.each do |shift_date| %>
+  					<% if shift_date["date"] == date %>
+  						<%= "出" %>
+  					<% end %>
+  				<% end %>
+  			</td>
+  		<% end %>
+	</tr>
+	
 <% else %>
 	<li>
   	<%= gravatar_for user, size: 52 %>
@@ -17,3 +25,4 @@
   	<% end %>
 	</li>
 <% end %>
+

@@ -6,7 +6,15 @@
 	<%= will_paginate %>
 
 	<ul class="users">
-  		<%= render @users %>
+		<table class="table_01">
+			<tr>
+			<th><%= @next_month_array[0].month %></th>
+			<% @next_month_array.each do |d| %>
+				<td><%= d.day %></td>
+			<% end %>
+			</tr>
+  			<%= render @users %>
+  		</table>
 	</ul>
 
 	<%= will_paginate %>

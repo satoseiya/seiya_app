@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+	require 'rubygems'
+	require 'active_support/all'
+
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]#url直接うったときのため
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,     only: :destroy
@@ -10,6 +13,12 @@ class UsersController < ApplicationController
 
   def show
   	if current_user.admin?
+  		d = Date.today
+  		d_start = d.beginning_of_month
+  		d_end = d.end_of_month
+		@next_month_array = (d_start..d_end).to_a
+
+
   		user = current_user
   		@users = User.paginate(page: params[:page]).find_all_by_company(user.company)
 
