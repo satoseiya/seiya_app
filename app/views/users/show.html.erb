@@ -8,9 +8,9 @@
 	<ul class="users">
 		<table class="table_01">
 			<tr>
-			<th><%= @next_month_array[0].month %></th>
+		     <th class="big" align="center"><%= "#{@next_month_array[0].month}月" %></th>
 			<% @next_month_array.each do |d| %>
-				<td><%= d.day %></td>
+				<td align="center"><%= "#{d.day}日" %></td>
 			<% end %>
 			</tr>
   			<%= render @users %>
@@ -20,7 +20,7 @@
 	<%= will_paginate %>
 <% else %>
 <div class="row">
-	<asaide>
+	<aside>
 		<section class="span4">
 			<h1>
 			<%= gravatar_for @user %>
